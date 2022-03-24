@@ -5,13 +5,7 @@ Unit testing in [enzyme].
 [axios] for API call.
 
 
-
-
-
-
 Using Redux and React router, a new url is created (_/book/{id}_) which will render a single book view.
-
-
 
 Clone and run:
 
