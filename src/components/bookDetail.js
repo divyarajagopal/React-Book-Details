@@ -18,25 +18,87 @@ const BookContainer = styled.div`
   justify-content: center;
 `;
 const BookHeader = styled.h1`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+font-size: 30px; letter-spacing: -1px; color: #DFBF84; text-transform: uppercase; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px;
 `;
 
 const BookList = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: circle;
-  display: table;
-  border-spacing: 10px;
-  border-collapse: separate;
-  margin: 0 auto;
+padding: 0;
+	margin: 50px auto;
+	list-style: none;
+	text-align: center;
+
+  li{
+    display: inline-block;
+	width: 20%;
+	min-width: 200px;
+	max-width: 325px;
+	padding: 80px 20px 40px;
+	position: relative;
+	vertical-align: top;
+	margin: 10px;
+	font-family: 'helvetica', san-serif;
+	min-height: 25vh;
+	background: #262a2b;
+	border: 1px solid #252727;
+	text-align: left;
+  }
+  li:before{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: #fff;
+    transform: skew(2deg, 2deg);
+  }
+  li:nth-child(odd):before {
+    background: #C9FFBF;
+    background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);
+    background: linear-gradient(to right, #FFAFBD, #C9FFBF);
+}
+li:nth-child(even):before {
+  background: #f2709c;
+  background: -webkit-linear-gradient(to right, #ff9472, #f2709c);
+  background: linear-gradient(to right, #ff9472, #f2709c);
+}
+  h2{
+    font-size: 114px;
+	margin: 0;
+	position: absolute;
+	opacity: 0.2;
+	top: 50px;
+	right: 10px;
+	transition: all 0.3s ease-in-out;
+  }
+  li:hover h2 {
+    top: 0px;
+    opacity: 0.6;
+  }
+  h4{
+    font-size: 17px;
+	color: #b7b7b7;
+	margin-bottom: 5px;
+  }
 
   p {
+    font-size: 16px;
+	
+	color: #b7b7b7;
+
     padding: 10px;
     margin: 0;
-    line-height: 10px;
+    line-height: 20px;
+  }
+  a{
+    font-size: 16px;
+	
+	color: #b7b7b7;
+
+    padding: 10px;
+    margin: 0;
+    line-height: 20px;
   }
 `;
 
@@ -73,12 +135,13 @@ class BookView extends Component {
           <BookList>
             {books.map(book => (
               <li key={book.book_id} align="start">
+                <h2>{book.book_id}</h2>
                 <div>
-                  <p>{book.name}</p>
-                  <p>{book.isbn}</p>
-                  <p>{book.published_at}</p>
-                  <p>{book.author}</p>
-                  <p>{book.cover}</p>
+                  <p><h4>Name:</h4> <span> {book.name}</span></p>
+                  <p><h4>ISBN:</h4> <span> {book.isbn}</span></p>
+                  <p><h4>Published At: </h4><span>{book.published_at}</span></p>
+                  <p><h4>Author:</h4><span>{book.author}</span> </p>
+                  <p><h4>Cover:</h4><a href="#"> {book.cover}</a></p>
                 </div>
               </li>
             ))}

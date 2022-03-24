@@ -7,6 +7,7 @@ describe('<Home />', () => {
   describe('renders', () => {
     it('without crashing', () => {
       shallow(<Home />);
+      
     });
   });
 });
